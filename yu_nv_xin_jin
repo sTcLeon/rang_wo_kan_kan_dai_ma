@@ -94,7 +94,7 @@ public:
     void controlDistance( double currentSpeed )
     {
         if( vehicleDistance >
-            70 )  //**************************************************************************************************************************
+            70 )  //
         {         // normal velocity control
             controlSpeed( currentSpeed );
             state = "CC";
@@ -240,9 +240,9 @@ public:
     void accAndspurhalten()
     {
         accController.control(
-            ego_velocity_ );  // 2222222222222222222222222222222222222222222222222222222222
+            ego_velocity_ );  // 
         steerController.control(
-            steeringControlTarget );  // 333333333333333333333333333333333333333333333333333
+            steeringControlTarget );  // 
     }
 
     bool processData( tronis::CircularMultiQueuedSocket& socket )
@@ -263,8 +263,7 @@ public:
         contours2Points();
         transform2img();
         display();
-        return midPoint;  // keypoint******************************************************
-    }
+        return midPoint;  // keypoint
     void display()
     {
         /*
@@ -581,7 +580,7 @@ protected:
                          << " in distance: " << to_string( vehicleDistance ) << " m." << endl;
                     accController.setDistance(
                         vehicleDistance -
-                        2 );  //************************************************************************************************************************************
+                        2 );  //
                     return true;
                 }
             }
@@ -823,29 +822,6 @@ int main( int argc, char** argv )
                         key_press = cv::waitKey( 1 );
                     }
                 }
-
-                /*if( msg_grabber2.tryPop( received_data2, true ) )//for traffic light
-                {
-                    std::cout << "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!@@@@@@@@@@@@@@@@"
-                                 "@@@@@@@@@@!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-                                 "!!!!!!!!!!!!!!!!!!!!!!!!!????????????????????????????????????"
-                              << std::endl;
-                    // convert socket data to tronis model data
-                    tronis::SocketDataStream data_stream2( received_data );
-                    tronis::ModelDataWrapper data_model2(
-                        tronis::Models::Create( data_stream2, tronis::MessageFormat::raw ) );
-                    if( !data_model2.is_valid() )
-                    {
-                        std::cout << "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!@@@@@@@@@@@@@@@@@@@@@"
-                                     "@@@@@!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-                                     "!!!!!!!!!!!!!!!"
-                                  << std::endl;
-                        continue;
-                    }
-                    // identify data type
-                    // lane_assistant.getData( data_model2 );
-                    // lane_assistant.processData( msg_grabber2 );
-                }*/
             }
             msg_grabber.close();
         }
